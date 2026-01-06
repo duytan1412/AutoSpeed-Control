@@ -13,21 +13,35 @@
 ## 📋 Description | Mô tả
 
 **🇬🇧 English:**  
-A simulation project demonstrating **Unit Testing** skills for Automotive software with safety-critical features. The system simulates automatic transmission control logic (P/R/N/D gears) and throttle/brake behavior with comprehensive safety verification.
+A simulation project demonstrating **Unit Testing** and **Safety-Critical Logic** for Automotive software. The system models an Automatic Transmission Controller and Throttle/Brake system, verified by 10 professional-grade test cases.
 
 **🇻🇳 Tiếng Việt:**  
-Dự án mô phỏng thể hiện kỹ năng **Unit Testing** cho phần mềm ô tô với các tính năng an toàn quan trọng. Hệ thống mô phỏng logic điều khiển hộp số tự động (P/R/N/D) và hành vi ga/phanh với kiểm thử an toàn toàn diện.
+Dự án mô phỏng thể hiện kỹ năng **Unit Testing** và **Logic An toàn (Safety-Critical)** cho phần mềm ô tô. Hệ thống mô phỏng Bộ điều khiển hộp số tự động và hệ thống Ga/Phanh, được xác thực bởi 10 kịch bản kiểm thử chuẩn công nghiệp.
 
 ---
 
-## 🛡️ Safety Features | Tính năng an toàn
+## 🧠 Verification Strategy | Chiến lược kiểm thử
 
-| Feature | Description | Mô tả |
-|---------|-------------|-------|
-| **Prevent Reverse While Driving** | Cannot shift to R when speed > 0 | Không cho về số lùi khi xe đang chạy |
-| **Brake Override Throttle** | Brake always takes priority over throttle | Phanh luôn ưu tiên hơn ga |
-| **Max Speed Limiter** | Speed cannot exceed 200 km/h | Giới hạn tốc độ tối đa 200 km/h |
-| **Park Safety Interlock** | Must stop + press brake to shift to P | Về P cần dừng hẳn + đạp phanh |
+**🇬🇧 English:**
+- **Boundary Value Analysis (BVA):** Testing speed limits (0 and 200 km/h) and throttle clamping (0% - 100%).
+- **State Transition Testing:** Validating gear shifts (P, R, N, D) under different speed conditions.
+- **Safety Interlock Assertion:** Using Google Test macros (`ASSERT_FALSE`, `EXPECT_EQ`) to enforce mechanical safety rules in software.
+
+**🇻🇳 Tiếng Việt:**
+- **Phân tích giá trị biên (BVA):** Kiểm tra giới hạn tốc độ (0 và 200 km/h) và kẹp giá trị ga (0% - 100%).
+- **Kiểm thử chuyển trạng thái:** Xác thực việc chuyển số (P, R, N, D) trong các điều kiện tốc độ khác nhau.
+- **Xác thực khóa liên động an toàn:** Sử dụng các macro Google Test để thực thi các quy tắc an toàn cơ khí ngay trên phần mềm.
+
+---
+
+## 🛡️ Safety Rules Implementation | Cài đặt quy tắc an toàn
+
+| Rule | Description | Logic Implementation |
+|------|-------------|----------------------|
+| **Reverse Lock** | Prevent R gear when speed > 0 | `if (newGear == 'R' && speed_ > 0) return false;` |
+| **Park Interlock** | Park requires Stop & Brake | `if (newGear == 'P' && (speed_ > 0 || !brake_)) return false;` |
+| **BOS (Brake Override)** | Brake > Throttle priority | `if (brake_) speed_ -= DECELERATION; else calculate_accel();` |
+| **Neutral Safety** | No acceleration in N | `if (gear_ == 'N') throttle_ignored;` |
 
 ---
 
@@ -35,15 +49,13 @@ Dự án mô phỏng thể hiện kỹ năng **Unit Testing** cho phần mềm �
 
 ```
 AutoSpeed-Control/
-├── CMakeLists.txt          # Build configuration
-├── README.md               # This file
-├── .github/workflows/      # CI/CD with GitHub Actions
-│   └── ci.yml
 ├── src/
-│   ├── CarController.h     # Class definition with Doxygen
-│   └── CarController.cpp   # Implementation with 5 safety rules
-└── tests/
-    └── test_safety.cpp     # 10 Unit Tests (GTest)
+│   ├── CarController.h     # OOP Header with Doxygen comments
+│   └── CarController.cpp   # Safety logic & State implementation
+├── tests/
+│   └── test_safety.cpp     # 10 Unit Tests (Safety, Boundary, State)
+├── .github/workflows/      # Automated CI pipeline
+└── CMakeLists.txt          # Modern CMake with FetchContent (GTest)
 ```
 
 ---
@@ -51,76 +63,19 @@ AutoSpeed-Control/
 ## 🚀 Build & Run | Cách chạy
 
 ```bash
-# Clone repository
-git clone https://github.com/duytan1412/AutoSpeed-Control.git
-cd AutoSpeed-Control
-
-# Build (CMake auto-downloads GoogleTest)
+# Windows (MinGW)
 mkdir build && cd build
-cmake -G "MinGW Makefiles" ..   # Windows
-# cmake ..                      # Linux/Mac
+cmake -G "MinGW Makefiles" ..
 cmake --build .
-
-# Run tests
 ctest --output-on-failure
-# Or run directly: ./bin/AutoSpeedTests
 ```
-
----
-
-## ✅ Test Results | Kết quả kiểm thử
-
-```
-[==========] Running 10 tests from 4 test suites.
-
-[----------] 7 tests from SafetyTest
-[       OK ] SafetyTest.PreventReverseWhileDriving
-[       OK ] SafetyTest.BrakeOverrideThrottle
-[       OK ] SafetyTest.AllowReverseWhenStopped
-[       OK ] SafetyTest.GearParkRequiresBrake
-[       OK ] SafetyTest.EmergencyBrakeAtHighSpeed
-[       OK ] SafetyTest.NeutralGearNoAcceleration
-
-[----------] 2 tests from BoundaryTest
-[       OK ] BoundaryTest.MaxSpeedLimit
-[       OK ] BoundaryTest.ThrottleClampedToValidRange
-[       OK ] BoundaryTest.SpeedNeverNegative
-
-[----------] 1 test from StateTest
-[       OK ] StateTest.ConsecutiveGearChanges
-
-[==========] 10 tests from 4 test suites ran. (28 ms total)
-[  PASSED  ] 10 tests.
-```
-
----
-
-## 🎓 What I Learned | Những gì tôi học được
-
-**🇬🇧 English:**
-- **Google Test Framework** - TEST(), ASSERT_*, EXPECT_* macros
-- **CMake** - Industry-standard build system with FetchContent
-- **Safety-Critical Thinking** - ISO 26262 mindset for Automotive
-- **CI/CD** - Automated testing with GitHub Actions
-
-**🇻🇳 Tiếng Việt:**
-- **Google Test Framework** - Các macro TEST(), ASSERT_*, EXPECT_*
-- **CMake** - Hệ thống build chuẩn ngành với FetchContent
-- **Tư duy Safety-Critical** - Tư duy ISO 26262 cho Automotive
-- **CI/CD** - Kiểm thử tự động với GitHub Actions
 
 ---
 
 ## 👨‍💻 Author | Tác giả
 
 **Bì Duy Tân**
-- 🎓 FPT Jetking - Chip Design Technology
-- 🎯 Target: Embedded Tester @ FPT Software Automotive
+- 🎓 FPT Jetking (Chip Design Technology)
+- 🎯 Embedded Software Tester Career Path
 - 📧 duytan2903@gmail.com
 - 🔗 [LinkedIn](https://www.linkedin.com/in/duy-t%C3%A2n-b-439ba0153/)
-
----
-
-## 📝 License
-
-MIT License - Free to use for learning purposes.
