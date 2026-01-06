@@ -5,7 +5,7 @@
 ![C++](https://img.shields.io/badge/C%2B%2B-17-blue)
 ![CMake](https://img.shields.io/badge/CMake-3.14+-green)
 ![GoogleTest](https://img.shields.io/badge/GoogleTest-v1.14-orange)
-![Tests](https://img.shields.io/badge/Tests-7%20Passed-brightgreen)
+![Tests](https://img.shields.io/badge/Tests-10%20Passed-brightgreen)
 
 ## 📋 Mô tả
 
