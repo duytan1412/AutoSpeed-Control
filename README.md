@@ -189,7 +189,7 @@ Achieved full decision coverage for all safety-critical branches using systemati
 - 🎓 FPT Jetking (Chip Design Technology) - **Electronics: 96/100, Digital Logic: 93/100**
 - 🎯 Embedded Firmware Engineer @ FPT Semiconductor (Target)
 - 📧 duytan2903@gmail.com
-- 🔗 [LinkedIn](https://www.linkedin.com/in/duy-t%C3%A2n-b-439ba0153/)
+- 🔗 [LinkedIn](https://www.linkedin.com/in/bi-duy-tan-)
 
 ---
 
