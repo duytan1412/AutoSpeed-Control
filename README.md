@@ -209,6 +209,24 @@ Achieved full decision coverage for all safety-critical branches using systemati
 
 ---
 
+## 🔮 Future Work / Verification Roadmap
+
+This C++ model serves as a **Golden Reference Model** for hardware verification. Planned enhancements:
+
+| Phase | Task | Output |
+|-------|------|--------|
+| **Phase 1** (Current) | C++ behavioral model + GoogleTest | ✅ 10 tests PASS, 100% decision coverage |
+| **Phase 2** (Planned) | SystemVerilog RTL conversion of FSM | Synthesizable RTL + State Encoding (One-hot) |
+| **Phase 3** (Planned) | SystemVerilog Assertions (SVA) | `assert property (@(posedge clk) (speed > 0) \|-> (gear != REVERSE));` |
+| **Phase 4** (Planned) | cocotb co-simulation (C++ ↔ RTL) | Reuse C++ test vectors as RTL stimulus via DPI-C |
+
+> **Why this matters:** In chip verification, C++ reference models are used alongside RTL to perform **equivalence checking**. This project demonstrates the software modeling side of that workflow.
+
+**Target CV Statement:**  
+*"Developed automotive transmission FSM with safety interlocks (C++/GoogleTest). Achieved 100% decision coverage for safety-critical branches. Designed verification flow with RTM traceability (ISO 26262 mindset)."*
+
+---
+
 ## 👨‍💻 Author | Tác giả
 
 **Bì Duy Tân**
