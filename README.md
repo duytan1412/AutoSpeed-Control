@@ -90,6 +90,21 @@ stateDiagram-v2
 
 ---
 
+## 🚦 Requirements Traceability Matrix (RTM)
+
+Mapping Safety Requirements to Verification Test Cases:
+
+| Requirement ID | Description | Test Case | Status |
+|---|---|---|---|
+| **REQ-001** | Vehicle must stop before shifting to Park | `SafetyTest.GearParkRequiresBrake` | ✅ PASS |
+| **REQ-002** | Reverse Gear inhibited while moving forward | `SafetyTest.PreventReverseWhileDriving` | ✅ PASS |
+| **REQ-003** | Brake MUST always override throttle input | `SafetyTest.BrakeOverrideThrottle` | ✅ PASS |
+| **REQ-004** | Speed cannot exceed MAX_SPEED limit | `BoundaryTest.MaxSpeedLimit` | ✅ PASS |
+| **REQ-005** | Negative speed is physically impossible | `BoundaryTest.SpeedNeverNegative` | ✅ PASS |
+
+
+---
+
 ## ✅ Verification Results | Kết quả xác thực
 
 **🎯 Coverage Achievement: 100% Decision Coverage for Safety-Critical States**  
