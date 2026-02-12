@@ -7,8 +7,7 @@
 ![GoogleTest](https://img.shields.io/badge/GoogleTest-v1.14-orange)
 ![Tests](https://img.shields.io/badge/Tests-10%20Passed-brightgreen)
 ![Coverage](https://img.shields.io/badge/Coverage-95%25-brightgreen)
-![Build](https://img.shields.io/badge/Build-Passing-success)
-![CI](https://img.shields.io/badge/CI-GitHub%20Actions-blue)
+[![CI](https://github.com/duytan1412/AutoSpeed-Control/actions/workflows/ci.yml/badge.svg)](https://github.com/duytan1412/AutoSpeed-Control/actions/workflows/ci.yml)
 
 ---
 
@@ -160,7 +159,9 @@ AutoSpeed-Control/
 ├── tests/
 │   └── test_safety.cpp     # Safety Logic Verification & Edge Case Analysis
 ├── .github/workflows/      # Automated CI pipeline
-│   └── ci.yml
+│   └── ci.yml              # Build + Test on every push
+├── run_tests.sh            # One-click test runner (Linux/macOS)
+├── run_tests.bat           # One-click test runner (Windows)
 └── CMakeLists.txt          # Modern CMake with FetchContent (GTest)
 ```
 
@@ -168,6 +169,16 @@ AutoSpeed-Control/
 
 ## 🚀 Build & Run | Cách chạy
 
+### Quick Start (One Command)
+```bash
+# Linux / macOS / Git Bash
+bash run_tests.sh
+
+# Windows CMD
+run_tests.bat
+```
+
+### Manual Build
 ```bash
 # Clone
 git clone https://github.com/duytan1412/AutoSpeed-Control.git
