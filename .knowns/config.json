@@ -1,0 +1,27 @@
+{
+  "name": "AutoSpeed-Control",
+  "id": "autospeed-control",
+  "createdAt": "2026-02-25T05:10:29.606Z",
+  "settings": {
+    "defaultPriority": "medium",
+    "defaultLabels": [],
+    "timeFormat": "24h",
+    "visibleColumns": [
+      "todo",
+      "in-progress",
+      "blocked",
+      "done",
+      "in-review"
+    ],
+    "serverPort": 6420,
+    "semanticSearch": {
+      "enabled": true,
+      "model": "gte-small"
+    },
+    "settings": {
+      "semanticSearch": {
+        "enabled": true
+      }
+    }
+  }
+}
