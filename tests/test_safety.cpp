@@ -1,27 +1,9 @@
 #include "../src/CarController.h"
 #include <gtest/gtest.h>
 
+// CarController Safety & Logic Verification
 
-/**
- * @file test_safety.cpp
- * @brief Unit tests for CarController safety features
- *
- * Test Categories:
- * 1. Safety Tests - Critical safety rule verification
- * 2. Boundary Tests - Edge case and limit testing
- * 3. State Tests - Gear transition validation
- */
-
-// ============================================================================
-// SAFETY TESTS - Critical for Automotive (ISO 26262)
-// ============================================================================
-
-/**
- * @test PreventReverseWhileDriving
- * @brief Verify car cannot shift to Reverse when moving forward
- * @details This is a CRITICAL safety feature - violating this can cause
- * accidents
- */
+// Ensure gear shift to Reverse is blocked when vehicle is moving forward
 TEST(SafetyTest, PreventReverseWhileDriving) {
   CarController car;
 
@@ -48,12 +30,7 @@ TEST(SafetyTest, PreventReverseWhileDriving) {
       << "Gear MUST NOT be Reverse when car was moving";
 }
 
-/**
- * @test BrakeOverrideThrottle
- * @brief Verify brake ALWAYS takes priority over throttle
- * @details Brake Override System (BOS) - critical for unintended acceleration
- * prevention
- */
+// Verify brake takes priority over throttle (Brake Override System)
 TEST(SafetyTest, BrakeOverrideThrottle) {
   CarController car;
 
@@ -79,11 +56,7 @@ TEST(SafetyTest, BrakeOverrideThrottle) {
       << "Speed MUST decrease when brake is pressed, regardless of throttle";
 }
 
-/**
- * @test MaxSpeedLimit
- * @brief Verify car cannot exceed maximum speed limit
- * @details Speed limiter - prevents dangerous overspeeding
- */
+// Speed limiter verification
 TEST(BoundaryTest, MaxSpeedLimit) {
   CarController car;
 
@@ -154,10 +127,7 @@ TEST(SafetyTest, GearParkRequiresBrake) {
 // ADDITIONAL TESTS
 // ============================================================================
 
-/**
- * @test ThrottleClampedTo100
- * @brief Verify throttle is clamped to valid range 0-100
- */
+// Verify throttle is clamped to 0-100%
 TEST(BoundaryTest, ThrottleClampedToValidRange) {
   CarController car;
 
@@ -273,11 +243,9 @@ TEST(StateTest, ConsecutiveGearChanges) {
   ASSERT_TRUE(car.setGear(CarController::GEAR_REVERSE)) << "N->R should work";
   ASSERT_TRUE(car.setGear(CarController::GEAR_PARK)) << "R->P should work";
 
-  ASSERT_EQ(car.getGear(), CarController::GEAR_PARK)
-      << "Should end in Park after valid sequence";
+    ASSERT_EQ(car.getGear(), CarController::GEAR_PARK);
 }
 
-// Main function for running tests
 int main(int argc, char **argv) {
   ::testing::InitGoogleTest(&argc, argv);
   return RUN_ALL_TESTS();

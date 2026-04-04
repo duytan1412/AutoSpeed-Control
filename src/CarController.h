@@ -3,21 +3,12 @@
 
 /**
  * @file CarController.h
- * @brief Header file for automotive speed control simulation
- * @details Implements safety-critical car control logic for Embedded Tester portfolio
- * 
- * FPT Software Automotive - Unit Testing Demo Project
+ * @brief Header for automotive speed control simulation
  */
 
 /**
  * @class CarController
- * @brief Manages vehicle speed, gear, brake, and throttle states
- * 
- * Safety Features:
- * - Prevents reverse gear when vehicle is moving forward
- * - Brake overrides throttle input
- * - Maximum speed limiter (200 km/h)
- * - Park gear requires complete stop and brake
+ * @brief Vehicle state management with safety interlocks
  */
 class CarController {
 public:
@@ -50,13 +41,8 @@ public:
     void update();
     
     /**
-     * @brief Attempt to change gear
-     * @param newGear Target gear (P, R, N, D)
-     * @return true if gear change successful, false if blocked by safety
-     * 
-     * Safety Rules:
-     * - Cannot shift to R if speed > 0
-     * - Cannot shift to P if speed > 0 or brake not pressed
+     * @brief Set vehicle gear (P, R, N, D)
+     * @return true if successful, false if blocked by safety logic
      */
     bool setGear(char newGear);
     
