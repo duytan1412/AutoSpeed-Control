@@ -17,17 +17,17 @@ This project implements a Finite State Machine (FSM) to manage vehicle gears (Pa
  
  ---
  
- ## 🏗️ Kiến trúc hệ thống (System Architecture)
- - **Core Logic**: Bộ điều khiển truyền động (Transmission Controller) được hiện thực bằng máy trạng thái (FSM).
- - **Safety Layer**: Lớp bảo vệ ngăn chặn các chuyển đổi trạng thái nguy hiểm (ví dụ: đang chạy nhanh không cho về số P).
- - **Verification Environment**: Sử dụng **GoogleTest** để thực hiện kiểm thử đơn vị (Unit Test) và kiểm tra biên (Boundary Analysis).
+ ## 🏗️ System Architecture
+ - **Core Logic**: The transmission controller is implemented using a high-reliability finite-state machine (FSM).
+ - **Safety Layer**: Integrated protection logic to prevent hazardous state transitions (e.g., blocking 'Park' engagement at high speeds).
+ - **Verification Environment**: Leverages **GoogleTest** for unit testing and comprehensive Boundary Value Analysis (BVA).
  
- ## 🛠️ Hướng dẫn chạy mô phỏng (Run Guidance)
- 1. **Cài đặt**: Cần trình biên dịch C++17 và CMake.
- 2. **Chạy Test**: 
-    - Windows: Chạy file `run_tests.bat`.
-    - Linux: `mkdir build && cd build && cmake .. && make && ./tests/AutoSpeedTests`.
- 3. **Kết quả**: Báo cáo PASS/FAIL sẽ hiển thị trực tiếp trên Console và được tự động kiểm tra bởi GitHub Actions.
+ ## 🛠️ Run Guidance
+ 1. **Prerequisites**: Requires a C++17 compliant compiler and CMake.
+ 2. **Execution**: 
+    - Windows: Run the `run_tests.bat` script.
+    - Linux: Execute `mkdir build && cd build && cmake .. && make && ./tests/AutoSpeedTests`.
+ 3. **Validation**: Pass/Fail results are output to the console and automatically verified via GitHub Actions CI.
  
  ---
 
