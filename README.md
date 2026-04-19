@@ -15,6 +15,14 @@ This project implements a Finite State Machine (FSM) to manage vehicle gears (Pa
 - **Verification Metrics**: Implementation of **Boundary Value Analysis** and **State Transition Testing**.
 - **CI/CD Automation**: Automated build and verification pipeline via GitHub Actions.
 
+## ✅ Test Execution Log
+
+### Safety Logic Verification (GoogleTest)
+![Test Log](file:///d:/Project/AutoSpeed-Control/docs/test_log.png)
+*Automated verification results confirming 100% decision coverage for safety-critical logic.*
+
+---
+
 ## Architecture
 
 ```mermaid
