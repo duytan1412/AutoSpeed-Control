@@ -18,7 +18,7 @@ This project implements a Finite State Machine (FSM) to manage vehicle gears (Pa
 ## ✅ Test Execution Log
 
 ### Safety Logic Verification (GoogleTest)
-![Test Log](file:///d:/Project/AutoSpeed-Control/docs/test_log.png)
+![Test Log](docs/test_log.png)
 *Automated verification results confirming 100% decision coverage for safety-critical logic.*
 
 ---
