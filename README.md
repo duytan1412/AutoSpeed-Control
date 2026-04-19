@@ -1,19 +1,19 @@
 # AutoSpeed-Control (Verification Methodology Demo)
 
-C++ Simulation of an Automotive Transmission Controller with **Safety-Critical Logic Verification** and **CI/CD Integration**. This project demonstrates the "Verification Mindset" through structural testing and boundary analysis.
+C++ Simulation of an Automotive Transmission Controller with Safety-Critical Logic Verification and CI/CD Integration. This project demonstrates the "Verification Mindset" through structural testing and boundary analysis.
 
 This project implements a Finite State Machine (FSM) to manage vehicle gears (Park, Reverse, Neutral, Drive) and enforces safety interlocks based on real-world automotive logic (e.g., Brake Override System, Reverse Lockout).
 
 ## Key Features
 
-- **Finite State Machine (FSM)**: Manages gear transitions with boundary guards.
-- **Safety Interlocks**:
-    - **Reverse Lock**: Prevents shifting to Reverse if vehicle speed > 0.
-    - **Park Interlock**: Requires vehicle to be at a full stop with the brake engaged to shift into Park.
-    - **Brake Override (BOS)**: Ensures braking always takes priority over throttle input.
-- **Unit Testing**: 100% decision coverage for safety-critical states using GoogleTest.
-- **Verification Metrics**: Implementation of **Boundary Value Analysis** and **State Transition Testing**.
-- **CI/CD Automation**: Automated build and verification pipeline via GitHub Actions.
+- Finite State Machine (FSM): Manages gear transitions with boundary guards.
+- Safety Interlocks:
+    - Reverse Lock: Prevents shifting to Reverse if vehicle speed > 0.
+    - Park Interlock: Requires vehicle to be at a full stop with the brake engaged to shift into Park.
+    - Brake Override (BOS): Ensures braking always takes priority over throttle input.
+- Unit Testing: 100% decision coverage for safety-critical states using GoogleTest.
+- Verification Metrics: Implementation of Boundary Value Analysis and State Transition Testing.
+- CI/CD Automation: Automated build and verification pipeline via GitHub Actions.
 
 ## ✅ Test Execution Log
 
@@ -63,7 +63,7 @@ AutoSpeed-Control/
 │   └── CarController.cpp   # FSM & Safety implementation
 ├── tests/
 │   └── test_safety.cpp     # GoogleTest suites (Safety, Boundary, State)
-├── .github/workflows/      # CI Automation
+├──.github/workflows/      # CI Automation
 ├── CMakeLists.txt          # Modern CMake build system
 └── run_tests.bat/sh        # One-click test runners
 ```
@@ -90,8 +90,8 @@ bash run_tests.sh
 ### Manual Build
 ```bash
 mkdir build && cd build
-cmake ..
-cmake --build .
+cmake..
+cmake --build.
 ctest --output-on-failure
 ```
 
