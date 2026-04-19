@@ -14,6 +14,22 @@ This project implements a Finite State Machine (FSM) to manage vehicle gears (Pa
 - Unit Testing: 100% decision coverage for safety-critical states using GoogleTest.
 - Verification Metrics: Implementation of Boundary Value Analysis and State Transition Testing.
 - CI/CD Automation: Automated build and verification pipeline via GitHub Actions.
+ 
+ ---
+ 
+ ## 🏗️ Kiến trúc hệ thống (System Architecture)
+ - **Core Logic**: Bộ điều khiển truyền động (Transmission Controller) được hiện thực bằng máy trạng thái (FSM).
+ - **Safety Layer**: Lớp bảo vệ ngăn chặn các chuyển đổi trạng thái nguy hiểm (ví dụ: đang chạy nhanh không cho về số P).
+ - **Verification Environment**: Sử dụng **GoogleTest** để thực hiện kiểm thử đơn vị (Unit Test) và kiểm tra biên (Boundary Analysis).
+ 
+ ## 🛠️ Hướng dẫn chạy mô phỏng (Run Guidance)
+ 1. **Cài đặt**: Cần trình biên dịch C++17 và CMake.
+ 2. **Chạy Test**: 
+    - Windows: Chạy file `run_tests.bat`.
+    - Linux: `mkdir build && cd build && cmake .. && make && ./tests/AutoSpeedTests`.
+ 3. **Kết quả**: Báo cáo PASS/FAIL sẽ hiển thị trực tiếp trên Console và được tự động kiểm tra bởi GitHub Actions.
+ 
+ ---
 
 ## ✅ Test Execution Log
 
