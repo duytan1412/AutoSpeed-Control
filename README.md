@@ -1,6 +1,6 @@
-# AutoSpeed-Control
+# AutoSpeed-Control (Verification Methodology Demo)
 
-C++ Simulation of an Automotive Transmission Controller and Throttle/Brake System with safety-critical logic verification.
+C++ Simulation of an Automotive Transmission Controller with **Safety-Critical Logic Verification** and **CI/CD Integration**. This project demonstrates the "Verification Mindset" through structural testing and boundary analysis.
 
 This project implements a Finite State Machine (FSM) to manage vehicle gears (Park, Reverse, Neutral, Drive) and enforces safety interlocks based on real-world automotive logic (e.g., Brake Override System, Reverse Lockout).
 
@@ -12,7 +12,8 @@ This project implements a Finite State Machine (FSM) to manage vehicle gears (Pa
     - **Park Interlock**: Requires vehicle to be at a full stop with the brake engaged to shift into Park.
     - **Brake Override (BOS)**: Ensures braking always takes priority over throttle input.
 - **Unit Testing**: 100% decision coverage for safety-critical states using GoogleTest.
-- **CI/CD**: Automated build and test pipeline via GitHub Actions.
+- **Verification Metrics**: Implementation of **Boundary Value Analysis** and **State Transition Testing**.
+- **CI/CD Automation**: Automated build and verification pipeline via GitHub Actions.
 
 ## Architecture
 
