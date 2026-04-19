@@ -17,12 +17,12 @@ This project implements a Finite State Machine (FSM) to manage vehicle gears (Pa
  
  ---
  
- ## 🏗️ System Architecture
+ ## System Architecture
  - **Core Logic**: The transmission controller is implemented using a high-reliability finite-state machine (FSM).
  - **Safety Layer**: Integrated protection logic to prevent hazardous state transitions (e.g., blocking 'Park' engagement at high speeds).
  - **Verification Environment**: Leverages **GoogleTest** for unit testing and comprehensive Boundary Value Analysis (BVA).
  
- ## 🛠️ Run Guidance
+ ## Run Guidance
  1. **Prerequisites**: Requires a C++17 compliant compiler and CMake.
  2. **Execution**: 
     - Windows: Run the `run_tests.bat` script.
@@ -31,7 +31,7 @@ This project implements a Finite State Machine (FSM) to manage vehicle gears (Pa
  
  ---
 
-## ✅ Test Execution Log
+## Test Execution Log
 
 ### Safety Logic Verification (GoogleTest)
 ![Test Log](docs/test_log.png)
